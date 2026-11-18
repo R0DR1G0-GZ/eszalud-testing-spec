@@ -10,23 +10,18 @@ public class Doctor {
 
     public Doctor(String documento, String nombres, String apellidos,
                   String colegiatura, String especialidad) {
-        if (documento == null) {
-            throw new IllegalArgumentException("El documento es obligatorio");
-        }
-        if (nombres == null) {
-            throw new IllegalArgumentException("Los nombres son obligatorios");
-        }
-        if (apellidos == null) {
-            throw new IllegalArgumentException("Los apellidos son obligatorios");
-        }
-        if (colegiatura == null) {
-            throw new IllegalArgumentException("La colegiatura es obligatoria");
-        }
-        this.documento = documento;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.colegiatura = colegiatura;
+        this.documento = requerido(documento, "El documento es obligatorio");
+        this.nombres = requerido(nombres, "Los nombres son obligatorios");
+        this.apellidos = requerido(apellidos, "Los apellidos son obligatorios");
+        this.colegiatura = requerido(colegiatura, "La colegiatura es obligatoria");
         this.especialidad = especialidad;
+    }
+
+    private static String requerido(String valor, String mensaje) {
+        if (valor == null) {
+            throw new IllegalArgumentException(mensaje);
+        }
+        return valor;
     }
 
     public String getDocumento() { return documento; }
