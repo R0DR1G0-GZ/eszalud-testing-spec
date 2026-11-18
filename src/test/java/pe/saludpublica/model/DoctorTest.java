@@ -47,4 +47,17 @@ class DoctorTest {
         assertThrows(IllegalArgumentException.class,
                 () -> new Doctor("40123456", "Carlos", "Ramírez", null, "esp-001"));
     }
+
+    @Test
+    @DisplayName("Verificar los atributos del doctor después de construirlo")
+    void shouldReturnAllDoctorAttributesAfterConstruction() {
+        Doctor doctor = new Doctor("40999888", "María", "Torres",
+                "CMP-99999", "esp-002");
+
+        assertEquals("40999888", doctor.getDocumento());
+        assertEquals("María", doctor.getNombres());
+        assertEquals("Torres", doctor.getApellidos());
+        assertEquals("CMP-99999", doctor.getColegiatura());
+        assertEquals("esp-002", doctor.getEspecialidad());
+    }
 }
