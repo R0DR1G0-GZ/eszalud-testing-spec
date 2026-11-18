@@ -72,4 +72,15 @@ class CitaMedicaTest {
                 () -> new CitaMedica("pac-001", "doc-001", "esp-001",
                         fechaHora, "Control general", null));
     }
+
+    @Test
+    @DisplayName("Conservar el estado válido recibido")
+    void shouldKeepValidStatus() {
+        LocalDateTime fechaHora = LocalDateTime.of(2026, 12, 1, 9, 30);
+
+        CitaMedica cita = new CitaMedica("pac-001", "doc-001", "esp-001",
+                fechaHora, "Control general", EstadoCita.CANCELADA);
+
+        assertEquals(EstadoCita.CANCELADA, cita.getEstado());
+    }
 }
